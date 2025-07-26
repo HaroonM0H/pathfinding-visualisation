@@ -1,0 +1,160 @@
+body, .pfv-root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background: #f7f8fa;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  overflow: hidden;
+}
+
+.pfv-title {
+  margin: 24px 0 12px 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.pfv-main-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100vh - 80px);
+}
+
+.pfv-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 220px;
+  margin-right: 32px;
+  gap: 18px;
+}
+
+.pfv-select,
+.pfv-btn {
+  padding: 14px 32px;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  outline: none;
+  border: none;
+  width: 100%;
+  min-width: 180px;
+  max-width: 220px;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+.pfv-select {
+  border: 2px solid #61dafb;
+  background: #fff;
+  color: #222;
+}
+
+.pfv-btn.draw { background: #61dafb; color: #222; }
+.pfv-btn.erase { background: #ff5252; color: #fff; }
+.pfv-btn.start { background: #27ae60; color: #fff; }
+.pfv-btn.reset { background: #f39c12; color: #fff; }
+.pfv-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+.pfv-grid-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.bfs-canvas {
+  border: 3px solid #333;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  background: #fafafa;
+  margin: 0 auto;
+  display: block;
+}
+
+.bfs-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  border-color: black;
+  border-width: 2px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-row {
+  display: flex;
+}
+
+.tile {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #333;
+  margin: 1px;
+  background: #eee;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tile.active {
+  background: #61dafb;
+}
+
+canvas {
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #333;
+}
+
+.draw-erase-btn {
+  padding: 14px 32px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 25px;
+  margin-bottom: 18px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s, color 0.3s;
+}
+
+.draw-erase-btn.draw {
+  background: #61dafb;
+  color: #222;
+}
+
+.draw-erase-btn.erase {
+  background: #ff5252;
+  color: #fff;
+}
+
+.start-btn {
+  padding: 14px 32px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 25px;
+  margin-bottom: 18px;
+  margin-left: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  background: #27ae60;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s, color 0.3s;
+}
+
+.start-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}

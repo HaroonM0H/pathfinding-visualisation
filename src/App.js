@@ -1,11 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import bfs from './BFS/bfs.jsx';
+import PathfindingVisualizer from './components/PathfindingVisualizer';
 
 function App() {
-  return (
-    bfs()
-  );
+  return <PathfindingVisualizer />;
 }
 
 export default App;
