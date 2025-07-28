@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Grid from './Grid';
 import { bfs } from '../algorithms/bfs';
+import { dfs } from '../algorithms/dfs';
 import './pathfinding.css';
 
 const gridSize = 20;
@@ -8,6 +9,7 @@ const tileSize = 22;
 
 const algorithms = {
   BFS: bfs,
+  DFS: dfs,
   // Add more algorithms here
 };
 
@@ -21,6 +23,9 @@ function PathfindingVisualizer() {
   const [path, setPath] = useState([]);
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('BFS');
+  const [timer, setTimer] = useState(0);
+  const timerRef = useRef(null);
+  const [noSolution, setNoSolution] = useState(false);
 
   const updateTile = (x, y, value) => {
     setTiles((prev) =>
@@ -32,14 +37,28 @@ function PathfindingVisualizer() {
 
   const toggleDrawMode = () => setDrawMode((prev) => !prev);
 
-  const runAlgorithm = () => {
-    algorithms[selectedAlgorithm]({
+  const runAlgorithm = async () => {
+    setNoSolution(false);
+    setTimer(0);
+
+    // Start real-time timer
+    const start = performance.now();
+    timerRef.current = setInterval(() => {
+      setTimer(((performance.now() - start) / 1000).toFixed(2));
+    }, 100);
+
+    await algorithms[selectedAlgorithm]({
       gridSize,
       tiles,
       setVisited,
       setPath,
       setIsAnimating,
+      setNoSolution,
     });
+
+    // Stop timer and set final time
+    clearInterval(timerRef.current);
+    setTimer(((performance.now() - start) / 1000).toFixed(2));
   };
 
   const resetGrid = () => {
@@ -85,6 +104,14 @@ function PathfindingVisualizer() {
           >
             Reset Grid
           </button>
+          <div style={{ marginTop: 20, fontWeight: 'bold', fontSize: '1.1rem' }}>
+            Time: {timer}s
+          </div>
+          {noSolution && (
+            <div style={{ color: '#ff5252', fontWeight: 'bold', marginTop: 8 }}>
+              No solution found!
+            </div>
+          )}
         </div>
         <div className="pfv-grid-container">
           <Grid

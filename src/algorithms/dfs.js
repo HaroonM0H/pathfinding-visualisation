@@ -1,19 +1,27 @@
-export async function bfs({ gridSize, tiles, setVisited, setPath, setIsAnimating, setNoSolution }) {
+// Returns all nodes in the order in which they were visited.
+// Make nodes point back to their previous node so that we can compute the shortest path
+// by backtracking from the finish node.
+
+export async function dfs({ gridSize, tiles, setVisited, setPath, setIsAnimating, setNoSolution }) {
   setIsAnimating(true);
   setVisited([]);
   setPath([]);
   if (setNoSolution) setNoSolution(false);
-  const queue = [[0, 0]];
+  const stack = [[0, 0]];
   const visitedSet = Array(gridSize).fill(null).map(() => Array(gridSize).fill(false));
   const prev = Array(gridSize).fill(null).map(() => Array(gridSize).fill(null));
-  visitedSet[0][0] = true;
 
-  while (queue.length > 0) {
-    const [y, x] = queue.shift();
+  while (stack.length > 0) {
+    const [y, x] = stack.pop();
+
+    // Skip if already visited
+    if (visitedSet[y][x]) continue;
+    visitedSet[y][x] = true;
     setVisited((v) => [...v, [y, x]]);
     await new Promise((res) => setTimeout(res, 15));
 
     if (y === gridSize - 1 && x === gridSize - 1) {
+      // Reconstruct path
       const pathArr = [];
       let curr = [y, x];
       while (curr) {
@@ -33,9 +41,9 @@ export async function bfs({ gridSize, tiles, setVisited, setPath, setIsAnimating
         !visitedSet[ny][nx] &&
         !tiles[ny][nx]
       ) {
-        queue.push([ny, nx]);
-        visitedSet[ny][nx] = true;
-        prev[ny][nx] = [y, x];
+        stack.push([ny, nx]);
+        // Only set prev if not visited yet
+        if (!prev[ny][nx]) prev[ny][nx] = [y, x];
       }
     }
   }
