@@ -1,4 +1,4 @@
-Check out the website here! -> pathfinding-visualisation.vercel.app
+Check out the website here! -> [Pathfinding Visualisation](pathfinding-visualisation.vercel.app)
 
 # Pathfinding Algorithm Visualizer 🎯
 
