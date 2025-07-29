@@ -1,3 +1,5 @@
+Check out the website here! -> pathfinding-visualisation.vercel.app
+
 # Pathfinding Algorithm Visualizer 🎯
 
 An interactive web application for visualizing common pathfinding algorithms in real-time.
