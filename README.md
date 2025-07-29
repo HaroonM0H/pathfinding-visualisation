@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Pathfinding Algorithm Visualizer 🎯
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive web application for visualizing common pathfinding algorithms in real-time.
+<img width="1103" height="766" alt="image" src="https://github.com/user-attachments/assets/a9f0b2d2-f880-4390-8ad7-72acc6e2b7f6" />
+<img width="1145" height="767" alt="image" src="https://github.com/user-attachments/assets/991410fb-3e7d-4709-af12-4bb641d975f3" />
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+### Algorithms
+- **Breadth-First Search (BFS)** - Guarantees shortest path
+- **Depth-First Search (DFS)** - Memory efficient exploration
+- **Dijkstra's Algorithm** - Optimal pathfinding with weights
 
-### `npm start`
+### Interactive Controls
+- Draw/erase walls to create custom mazes
+- Real-time algorithm visualization
+- Performance timing metrics
+- Path validation and error handling
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Setup & Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
+- Node.js (v16+)
+- npm (v7+)
 
-### `npm test`
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/pathfinding-visualizer.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Navigate to project
+cd pathfinding-visualizer
 
-### `npm run build`
+# Install dependencies
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Start development server
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🎮 How to Use
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Select Algorithm** - Choose from the dropdown menu
+2. **Create Maze** 
+   - Click 'Draw Walls' to start drawing
+   - Click and drag to create walls
+   - Toggle 'Erase Walls' to remove walls
+3. **Run Visualization**
+   - Click 'Start' to begin
+   - Watch the algorithm search in real-time
+   - View execution time and path details
+4. **Reset** - Clear the grid to try different patterns
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🚀 Technologies
+- React
+- JavaScript (ES6+)
+- HTML5 Canvas
+- CSS3
