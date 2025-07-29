@@ -7,23 +7,21 @@ export async function dfs({ gridSize, tiles, setVisited, setPath, setIsAnimating
   setVisited([]);
   setPath([]);
   if (setNoSolution) setNoSolution(false);
+
   const stack = [[0, 0]];
   const visitedSet = Array(gridSize).fill(null).map(() => Array(gridSize).fill(false));
   const prev = Array(gridSize).fill(null).map(() => Array(gridSize).fill(null));
 
   while (stack.length > 0) {
     const [y, x] = stack.pop();
-
-    // Skip if already visited
     if (visitedSet[y][x]) continue;
+    
     visitedSet[y][x] = true;
-    setVisited((v) => [...v, [y, x]]);
-    await new Promise((res) => setTimeout(res, 15));
+    setVisited(v => [...v, [y, x]]);
+    await new Promise(res => setTimeout(res, 15));
 
     if (y === gridSize - 1 && x === gridSize - 1) {
-      // Reconstruct path
-      const pathArr = [];
-      let curr = [y, x];
+      let curr = [y, x], pathArr = [];
       while (curr) {
         pathArr.push(curr);
         curr = prev[curr[0]][curr[1]];
@@ -33,20 +31,15 @@ export async function dfs({ gridSize, tiles, setVisited, setPath, setIsAnimating
       return;
     }
 
-    for (const [dy, dx] of [[0,1],[1,0],[0,-1],[-1,0]]) {
+    [[0,1],[1,0],[0,-1],[-1,0]].forEach(([dy, dx]) => {
       const ny = y + dy, nx = x + dx;
-      if (
-        ny >= 0 && ny < gridSize &&
-        nx >= 0 && nx < gridSize &&
-        !visitedSet[ny][nx] &&
-        !tiles[ny][nx]
-      ) {
+      if (ny >= 0 && ny < gridSize && nx >= 0 && nx < gridSize && !visitedSet[ny][nx] && !tiles[ny][nx]) {
         stack.push([ny, nx]);
-        // Only set prev if not visited yet
         if (!prev[ny][nx]) prev[ny][nx] = [y, x];
       }
-    }
+    });
   }
+  
   setIsAnimating(false);
   if (setNoSolution) setNoSolution(true);
 }

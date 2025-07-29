@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import Grid from './Grid';
 import { bfs } from '../algorithms/bfs';
 import { dfs } from '../algorithms/dfs';
+import { dijkstra } from '../algorithms/dijkstra';
 import './pathfinding.css';
 
 const gridSize = 20;
@@ -10,6 +11,7 @@ const tileSize = 22;
 const algorithms = {
   BFS: bfs,
   DFS: dfs,
+  Dijkstra: dijkstra,
   // Add more algorithms here
 };
 
@@ -41,7 +43,6 @@ function PathfindingVisualizer() {
     setNoSolution(false);
     setTimer(0);
 
-    // Start real-time timer
     const start = performance.now();
     timerRef.current = setInterval(() => {
       setTimer(((performance.now() - start) / 1000).toFixed(2));
